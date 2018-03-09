@@ -31,6 +31,7 @@
       "serviceWorker": true
     },
     {
+      "name": "server",
       "root": "src",
       "outDir": "dist-server",
       "assets": [

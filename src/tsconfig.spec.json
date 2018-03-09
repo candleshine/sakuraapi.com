@@ -9,6 +9,9 @@
       "node"
     ]
   },
+  "exclude": [
+    "server.ts"
+  ],
   "files": [
     "test.ts"
   ],

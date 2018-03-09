@@ -11,7 +11,14 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:ssr": "npm run build:ssr && npm run serve:ssr",
+    "build:prerender": "npm run build:client-and-server-bundles && npm run webpack:server && npm run generate:prerender",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
+    "generate:prerender": "cd dist && node prerender",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    "serve:prerender": "cd dist/browser && http-server",
+    "serve:ssr": "node dist/server"
   },
   "private": true,
   "homepage": "https://github.com/sakuraapi",
@@ -34,6 +41,9 @@
     "@angular/router": "^5.2.8",
     "@angular/service-worker": "^5.2.8",
     "@types/moment": "^2.13.0",
+    "@nguniversal/common": "^5.0.0-beta.6",
+    "@nguniversal/express-engine": "^5.0.0-beta.6",
+    "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.6",
     "core-js": "^2.4.1",
     "moment": "^2.21.0",
     "normalize.css": "^8.0.0",
@@ -64,6 +74,7 @@
     "protractor": "^5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
+    "ts-loader": "^4.0.1",
     "typescript": "~2.5.3"
   }
 }
