@@ -12,13 +12,16 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:ssr": "npm run build:ssr && npm run serve:ssr",
+    "build:clean": "rm -rf dist",
+    "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false",
     "build:prerender": "npm run build:client-and-server-bundles && npm run webpack:server && npm run generate:prerender",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "generate:prerender": "cd dist && node prerender",
-    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:prerender": "cd dist/browser && http-server",
-    "serve:ssr": "node dist/server"
+    "serve:ssr": "node dist/server",
+    "start:ssr": "npm run build:ssr && npm run serve:ssr",
+    "watch": "ng build --prod -w && ng build --prod --app 1 --output-hashing=false -w",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
   },
   "private": true,
   "homepage": "https://github.com/sakuraapi",
@@ -59,6 +62,7 @@
     "@types/node": "^9.4.7",
     "codelyzer": "^4.0.1",
     "diff": "^3.5.0",
+    "express": "^4.16.2",
     "http-server": "^0.11.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -72,9 +76,9 @@
     "mocha": "^5.0.4",
     "nodemon": "^1.17.1",
     "protractor": "^5.1.2",
+    "ts-loader": "3.5",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "ts-loader": "^4.0.1",
     "typescript": "~2.5.3"
   }
 }

@@ -17,7 +17,7 @@ import {SharedModule}            from './shared/shared.module';
     PageNotFoundComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserModule.withServerTransition({appId: 'sakuraApp'}),
     BrowserAnimationsModule,
     SharedModule,
     HomeModule,
